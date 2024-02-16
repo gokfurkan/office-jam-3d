@@ -15,6 +15,9 @@ namespace Game.Dev.Scripts
         public static Action OnSetMoneys;
         public static void CallSetMoneys() { OnSetMoneys?.Invoke(); }
         
+        public static Action OnSpawnMoneys;
+        public static void CallSpawnMoneys() { OnSpawnMoneys?.Invoke(); }
+        
         //Game Manager
         
         public static Action OnLevelStart;
@@ -41,6 +44,9 @@ namespace Game.Dev.Scripts
         
         public static Action <GameObject> OnSelectChair;
         public static void CallSelectChair(GameObject selectedObject) { OnSelectChair?.Invoke(selectedObject); }
+        
+        public static Action OnFailMoveSequence;
+        public static void CallFailMoveSequence() { OnFailMoveSequence?.Invoke(); }
         
         public static Action OnSuccessMoveSequence;
         public static void CallSuccessMoveSequence() { OnSuccessMoveSequence?.Invoke(); }

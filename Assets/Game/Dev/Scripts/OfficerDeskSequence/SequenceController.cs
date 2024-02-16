@@ -2,7 +2,7 @@
 
 namespace Game.Dev.Scripts
 {
-    public class OfficerDeskSequence : MonoBehaviour
+    public class SequenceController : MonoBehaviour
     {
         public ChairController chairController;
         public DeskController deskController;
@@ -30,17 +30,25 @@ namespace Game.Dev.Scripts
         {
             chairController.ResetMoveSequence();
             
-            deskController.OnOfficerSitDesk();
-            officerController.OnOfficerSitDesk();
-            chairController.OnOfficerSitDesk();
+            deskController.OnSuccessSequence();
+            officerController.OnSuccessSequence();
+            chairController.OnSuccessSequence();
             
             BusSystem.CallSuccessMoveSequence();
         }
 
-        public void OnChairMoveFail()
+        public void OnChairMoveFail(GameObject collisionChair)
         {
             chairController.ResetMoveSequence();
             chairController.ResetPosition();
+            
+            var collChairController = collisionChair.GetComponent<ChairController>();
+            if (collChairController != null)
+            {
+                collChairController.OnFailSequence();
+            }
+
+            BusSystem.CallFailMoveSequence();
         }
     }
 }

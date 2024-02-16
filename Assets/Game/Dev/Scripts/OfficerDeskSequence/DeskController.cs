@@ -4,9 +4,9 @@ namespace Game.Dev.Scripts
 {
     public class DeskController : MonoBehaviour
     {
-        public void OnOfficerSitDesk()
+        public void OnSuccessSequence()
         {
-            Debug.Log("On desk success sequence");
+            
         }
     }
 }

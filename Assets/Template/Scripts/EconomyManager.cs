@@ -1,11 +1,12 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using Game.Dev.Scripts;
 using TMPro;
 using UnityEngine;
 
 namespace Template.Scripts
 {
-    public class EconomyManager : Singleton<EconomyManager>
+    public class EconomyManager : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI moneyText;
         [SerializeField] private Money moneyPrefab;
@@ -14,12 +15,28 @@ namespace Template.Scripts
 
         private int oldMoneyTarget, newMoneyTarget;
 
+        private void OnEnable()
+        {
+            BusSystem.OnAddMoneys += AddMoneys;
+            BusSystem.OnResetMoneys += ResetMoneys;
+            BusSystem.OnSetMoneys += SetMoneyText;
+            BusSystem.OnSpawnMoneys += SpawnMoneys;
+        }
+
+        private void OnDisable()
+        {
+            BusSystem.OnAddMoneys -= AddMoneys;
+            BusSystem.OnResetMoneys -= ResetMoneys;
+            BusSystem.OnSetMoneys -= SetMoneyText;
+            BusSystem.OnSpawnMoneys -= SpawnMoneys;
+        }
+
         private void Start()
         {
             BusSystem.CallSetMoneys();
         }
         
-        public void AddMoneys(int amount)
+        private void AddMoneys(int amount)
         {
             var oldAmount =  SaveManager.instance.saveData.GetMoneys();
             var newAmount = oldAmount + amount;
@@ -33,7 +50,7 @@ namespace Template.Scripts
             SetMoneyText();
         }
 
-        public void ResetMoneys()
+        private void ResetMoneys()
         {
             SaveManager.instance.saveData.moneys = 0;
             SaveManager.instance.Save();
@@ -61,7 +78,7 @@ namespace Template.Scripts
             // BusSystem.CallRefreshUpgradeValues();
         }
         
-        public void SpawnMoneys()
+        private void SpawnMoneys()
         {
             for (int i = 0; i < InitializeManager.instance.gameSettings.economyOptions.spawnMoneyAmount; i++)
             {

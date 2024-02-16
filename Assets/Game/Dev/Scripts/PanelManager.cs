@@ -70,8 +70,7 @@ namespace Game.Dev.Scripts
                 Activate(PanelType.Win);
                 
                 BusSystem.CallAddMoneys(InitializeManager.instance.gameSettings.economyOptions.winIncome);
-                
-                EconomyManager.instance.SpawnMoneys();
+                BusSystem.CallSpawnMoneys();
             }
             else
             {

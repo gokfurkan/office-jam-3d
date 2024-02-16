@@ -130,6 +130,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 4869345583647949082}
     m_Modifications:
     - target: {fileID: 1918597842973428617, guid: 32c77136bbccdb64991bd1f31d7f2724, type: 3}
+      propertyPath: sequenceController
+      value: 
+      objectReference: {fileID: 4869345583647949077}
+    - target: {fileID: 1918597842973428617, guid: 32c77136bbccdb64991bd1f31d7f2724, type: 3}
       propertyPath: officerDeskSequence
       value: 
       objectReference: {fileID: 4869345583647949077}

@@ -4,9 +4,9 @@ namespace Game.Dev.Scripts
 {
     public class OfficerController : MonoBehaviour
     {
-        public void OnOfficerSitDesk()
+        public void OnSuccessSequence()
         {
-            Debug.Log("On officer success sequence");
+            
         }
     }
 }

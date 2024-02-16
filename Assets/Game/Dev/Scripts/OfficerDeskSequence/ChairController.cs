@@ -9,7 +9,7 @@ namespace Game.Dev.Scripts
     public class ChairController : MonoBehaviour
     {
         [SerializeField] private ChairSettings chairSettings;
-        [SerializeField] private OfficerDeskSequence officerDeskSequence;
+        [SerializeField] private SequenceController sequenceController;
         [SerializeField] private Rigidbody rb;
 
         private bool canMove;
@@ -19,6 +19,11 @@ namespace Game.Dev.Scripts
         
         private void Start()
         {
+            InitChair();
+        }
+
+        private void InitChair()
+        {
             canMove = true;
             rb.isKinematic = true;
             initialChairPositionZ = transform.localPosition.z;
@@ -26,21 +31,20 @@ namespace Game.Dev.Scripts
 
         private void OnCollisionEnter(Collision collision)
         {
+            ControlCollision(collision);
+        }
+
+        private void ControlCollision(Collision collision)
+        {
             if (!isChairMoving) return;
 
             if (ExtensionsMethods.IsInLayerMask(collision.gameObject.layer , chairSettings.successLayers))
             {
-                officerDeskSequence.OnChairMoveSuccess();
+                sequenceController.OnChairMoveSuccess();
             }
             else if (ExtensionsMethods.IsInLayerMask(collision.gameObject.layer , chairSettings.failLayers))
             {
-                officerDeskSequence.OnChairMoveFail();
-
-                var collChairController = collision.gameObject.GetComponent<ChairController>();
-                if (collChairController != null)
-                {
-                    collChairController.HandleCollisionWithAnotherChair();
-                }
+                sequenceController.OnChairMoveFail(collision.gameObject);
             }
         }
         
@@ -63,20 +67,20 @@ namespace Game.Dev.Scripts
 
         public void ResetPosition()
         {
-            transform.DOLocalMoveZ(initialChairPositionZ, chairSettings.selectMoveDuration).OnComplete(() =>
+            transform.DOLocalMoveZ(initialChairPositionZ, chairSettings.failMoveDuration).OnComplete(() =>
             {
                 canMove = true;
             });
         }
 
-        public void HandleCollisionWithAnotherChair()
+        public void OnFailSequence()
         {
-            Debug.Log("Hit another chair");
+           
         }
 
-        public void OnOfficerSitDesk()
+        public void OnSuccessSequence()
         {
-            Debug.Log("On chair success sequence");
+            
         }
     }
 }

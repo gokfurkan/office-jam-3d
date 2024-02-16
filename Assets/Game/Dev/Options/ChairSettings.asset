@@ -20,4 +20,4 @@ MonoBehaviour:
     m_Bits: 128
   selectMoveAmount: 20
   selectMoveDuration: 1.5
-  failMoveDuration: 1
+  failMoveDuration: 0.75
