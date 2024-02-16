@@ -36,5 +36,13 @@ namespace Game.Dev.Scripts
         
         public static Action OnMouseClickUp;
         public static void CallMouseClickUp() { OnMouseClickUp?.Invoke(); }
+        
+        //
+        
+        public static Action <GameObject> OnSelectChair;
+        public static void CallSelectChair(GameObject selectedObject) { OnSelectChair?.Invoke(selectedObject); }
+        
+        public static Action OnSuccessMoveSequence;
+        public static void CallSuccessMoveSequence() { OnSuccessMoveSequence?.Invoke(); }
     }
 }

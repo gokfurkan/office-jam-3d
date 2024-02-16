@@ -1,4 +1,5 @@
 ﻿using System;
+using Template.Scripts;
 using UnityEngine;
 
 namespace Game.Dev.Scripts
@@ -21,13 +22,15 @@ namespace Game.Dev.Scripts
 
         private void ControlSelect()
         {
+            if (GameManager.instance.gameStatus.hasLevelEnd) return;
+            
             if (Input.GetMouseButtonDown(0))
             {
                 var ray = mainCamera.ScreenPointToRay(Input.mousePosition);
                 
                 if (Physics.Raycast(ray, out var hit, Mathf.Infinity, selectableLayer))
                 {
-                    Debug.Log("Selected Object: " + hit.transform.gameObject.name);
+                    BusSystem.CallSelectChair(hit.collider.gameObject);
                 }
             }
         }
