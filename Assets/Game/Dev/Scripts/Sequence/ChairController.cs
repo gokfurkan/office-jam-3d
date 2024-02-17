@@ -1,10 +1,9 @@
-﻿using System;
-using DG.Tweening;
+﻿using DG.Tweening;
 using Game.Dev.Scripts.Scriptables;
 using Template.Scripts;
 using UnityEngine;
 
-namespace Game.Dev.Scripts
+namespace Game.Dev.Scripts.Sequence
 {
     public class ChairController : MonoBehaviour
     {
