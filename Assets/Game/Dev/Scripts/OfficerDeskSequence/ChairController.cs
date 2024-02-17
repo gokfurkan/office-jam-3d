@@ -17,12 +17,7 @@ namespace Game.Dev.Scripts
         private Tween moveTween;
         private float initialChairPositionZ;
         
-        private void Start()
-        {
-            InitChair();
-        }
-
-        private void InitChair()
+        public void InitChair()
         {
             canMove = true;
             rb.isKinematic = true;

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Game.Dev.Scripts
 {
@@ -17,7 +18,14 @@ namespace Game.Dev.Scripts
         {
             BusSystem.OnSelectChair -= ControlSelectSequence;
         }
-        
+
+        private void Start()
+        {
+            officerController.InitOfficer();
+            chairController.InitChair();
+            deskController.InitDesk();
+        }
+
         private void ControlSelectSequence(GameObject selected)
         {
             if (selected == chairController.gameObject)
