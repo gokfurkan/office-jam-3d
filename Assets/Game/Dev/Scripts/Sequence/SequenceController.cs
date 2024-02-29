@@ -48,6 +48,9 @@ namespace Game.Dev.Scripts.Sequence
         {
             chairController.ResetMoveSequence();
             chairController.ResetPosition();
+            chairController.OnFailSequence();
+            
+            officerController.OnFailSequence();
             
             var collChairController = collisionChair.GetComponent<ChairController>();
             if (collChairController != null)
