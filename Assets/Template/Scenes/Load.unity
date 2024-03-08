@@ -347,6 +347,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1051988232592391142, guid: 70a3daf486abd6c4f90ab1534a29cc70, type: 3}
+      propertyPath: effects.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051988232592391142, guid: 70a3daf486abd6c4f90ab1534a29cc70, type: 3}
+      propertyPath: effects.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a1fb91b06495d243b95aa4981a34a18, type: 3}
+    - target: {fileID: 1051988232592391142, guid: 70a3daf486abd6c4f90ab1534a29cc70, type: 3}
+      propertyPath: effects.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: b17fdeeeaacd4cc4e9305ef10c88b822, type: 3}
+    - target: {fileID: 1051988232592391142, guid: 70a3daf486abd6c4f90ab1534a29cc70, type: 3}
+      propertyPath: effects.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: f08e3c44a4dc31e47b8fff7adea9ee45, type: 3}
+    - target: {fileID: 1051988232592391142, guid: 70a3daf486abd6c4f90ab1534a29cc70, type: 3}
+      propertyPath: effects.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: a98ff5a76f80c2b42928ec7cd3b5ad57, type: 3}
     - target: {fileID: 1051988232592391143, guid: 70a3daf486abd6c4f90ab1534a29cc70, type: 3}
       propertyPath: m_RootOrder
       value: 5

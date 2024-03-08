@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using MoreMountains.NiceVibrations;
+using Template.Scripts;
+using UnityEngine;
 
 namespace Game.Dev.Scripts.Sequence
 {
@@ -29,12 +31,18 @@ namespace Game.Dev.Scripts.Sequence
         {
             if (selected == chairController.gameObject)
             {
+                AudioManager.instance.Play(AudioType.Move);
+                HapticManager.instance.PlayHaptic(HapticTypes.LightImpact);
+                
                 chairController.StartMoveSequence();
             }
         }
         
         public void OnChairMoveSuccess()
         {
+            HapticManager.instance.PlayHaptic(HapticTypes.MediumImpact);
+            AudioManager.instance.Play(AudioType.SuccessMove);
+            
             chairController.ResetMoveSequence();
             
             deskController.OnSuccessSequence();
@@ -46,6 +54,9 @@ namespace Game.Dev.Scripts.Sequence
 
         public void OnChairMoveFail(GameObject collisionChair)
         {
+            HapticManager.instance.PlayHaptic(HapticTypes.HeavyImpact);
+            AudioManager.instance.Play(AudioType.FailMove);
+            
             chairController.ResetMoveSequence();
             chairController.ResetPosition();
             chairController.OnFailSequence();

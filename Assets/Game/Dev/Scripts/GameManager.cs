@@ -58,6 +58,8 @@ namespace Game.Dev.Scripts
             
             if (win)
             {
+                AudioManager.instance.Play(AudioType.WinLevel);
+                
                 SaveManager.instance.saveData.level++;
                 SaveManager.instance.Save();
                 gameStatus.hasLevelWin = true;

@@ -38,6 +38,9 @@
 
     public enum AudioType
     {
-        GameStart,
+        Move,
+        FailMove,
+        SuccessMove,
+        WinLevel,
     }
 }
